@@ -25,6 +25,7 @@ namespace u5_Printing_CouperEbbsPicken
     /// </summary>
     public partial class MainWindow : Window
     {
+        // variable
         int copies = 0;
         public MainWindow()
         {
@@ -35,17 +36,26 @@ namespace u5_Printing_CouperEbbsPicken
 
         private void btnRun_Click(object sender, RoutedEventArgs e)
         {
+            // resets the contents of labels
             lblPricePerCopy.Content = "Price per copys is $";
             lblTotalPrice.Content = "Total cost is: $";
+
+            // variable
             double price;
+
+            // turns the string into an int
             int.TryParse(txtInput.Text, out copies);
+
+            // what happens for less than 100 copies
             if (copies <= 99)
             {
+                // changes price and updates the labels
                 price = 0.30;
                 lblPricePerCopy.Content += price.ToString();
                 lblTotalPrice.Content += Math.Round(price * copies, 2).ToString();
             }
 
+            // what happens for less than 500 but more than 100 copies
             if (copies <= 499
                 && copies >= 100)
             {
@@ -54,6 +64,7 @@ namespace u5_Printing_CouperEbbsPicken
                 lblTotalPrice.Content += Math.Round(price * copies, 2).ToString();
             }
 
+            // what happens for less than 750 but more than 500 copies
             if (copies <= 749
                 && copies >= 500)
             {
@@ -62,6 +73,7 @@ namespace u5_Printing_CouperEbbsPicken
                 lblTotalPrice.Content += Math.Round(price * copies, 2).ToString();
             }
 
+            // what happens for less than 1000 but more than 750 copies
             if (copies <= 1000
                 && copies >= 750)
             {
@@ -70,6 +82,7 @@ namespace u5_Printing_CouperEbbsPicken
                 lblTotalPrice.Content += Math.Round(price * copies, 2).ToString();
             }
 
+            // what happens for more than 1000 copies
             if (copies > 1000)
             {
                 price = 0.25;
